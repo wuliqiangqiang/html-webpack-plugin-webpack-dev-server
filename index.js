@@ -22,7 +22,7 @@ webpackAutoRefreshPlugin.prototype.apply = function(compiler) {
             'webpackAutoRefreshPlugin',
             (data, cb) => {
                 if (!this.port) {
-                    cb(null, data)
+                    cb(null, data);
                 } else {
                     let html = data.html;
                     html = html.replace(/\n/g, '');

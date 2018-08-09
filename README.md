@@ -16,9 +16,9 @@ const webpackAutoRefreshPlugin = require('html-webpack-plugin-webpack-dev-server
     plugins:[
         ...
         new webpackAutoRefreshPlugin({ 
-            port: '8080',   //Local development port
-            ip:'127.0.0.1'  //Local development ip
-         }) //只在本地开发手动添加webpack的自动更新script
+            port: '8080',   //Local development port	(necessarily)
+            ip:'127.0.0.1'  //Local development ip 		(Optional) 	if you set val null,The plugins will auto get your local development ip address
+         })
     ]
 }
 ```
