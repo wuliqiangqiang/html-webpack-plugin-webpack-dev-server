@@ -1,10 +1,14 @@
 {
   "name": "html-webpack-plugin-webpack-dev-server",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "本插件基于html-webpack-plugin和webpack-dev-server实现多入口的自动浏览器刷新，inline形式。",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wuliqiangqiang/html-webpack-plugin-webpack-dev-server.git"
   },
   "keywords": [
     "html-webpack-plugin-webpack-dev-server"
