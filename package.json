@@ -1,6 +1,6 @@
 {
   "name": "html-webpack-plugin-webpack-dev-server",
-  "version": "1.0.1",
+  "version": "1.1.2",
   "description": "本插件基于html-webpack-plugin和webpack-dev-server实现多入口的自动浏览器刷新，inline形式。",
   "main": "index.js",
   "scripts": {
