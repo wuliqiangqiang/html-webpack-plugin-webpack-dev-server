@@ -14,5 +14,8 @@
     "html-webpack-plugin-webpack-dev-server"
   ],
   "author": "qiangqiang",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "html-webpack-plugin": "^4.0.0-beta.4"
+  }
 }

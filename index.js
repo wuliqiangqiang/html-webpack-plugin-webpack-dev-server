@@ -2,6 +2,7 @@ let os = require('os');
 let hostName = os.hostname();
 let interfaces = os.networkInterfaces();
 let IPv4 = '127.0.0.1';
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 for (var key in interfaces) {
   var alias = 0;
   interfaces[key].forEach((details) => {
@@ -17,8 +18,10 @@ function webpackAutoRefreshPlugin({ port, ip }) {
 }
 
 webpackAutoRefreshPlugin.prototype.apply = function(compiler) {
+
   compiler.hooks.compilation.tap('webpackAutoRefreshPlugin', (compilation) => {
-    compilation.hooks.htmlWebpackPluginAfterHtmlProcessing.tapAsync(
+
+    HtmlWebpackPlugin.getHooks(compilation).beforeEmit.tapAsync(
       'webpackAutoRefreshPlugin',
       (data, cb) => {
         if (!this.port) {
@@ -27,10 +30,11 @@ webpackAutoRefreshPlugin.prototype.apply = function(compiler) {
           let html = data.html;
           html = html.replace(/\/\/(.*)/g,'').replace(/\/\*(\n|.)*?\*\//g,'');
           html = html.replace(/\n/g,'');
-          html = html.replace(/\s{3,}/g,'\n');
+
           let fristScriptTapIndex = html.indexOf('</body');
           let reg = new RegExp('(.{' + fristScriptTapIndex + '})')
           html = html.replace(reg, `$1<script src="http://${this.ip?this.ip:'localhost'}:${this.port}/webpack-dev-server.js"></script>`);
+          html = html.replace(/\s{3,}/g,'\n');
           data.html = html;
           cb(null, data)
         }
