@@ -28,13 +28,7 @@ webpackAutoRefreshPlugin.prototype.apply = function(compiler) {
           cb(null, data);
         } else {
           let html = data.html;
-          html = html.replace(/\/\/(.*)/g,'').replace(/\/\*(\n|.)*?\*\//g,'');
-          html = html.replace(/\n/g,'');
-
-          let fristScriptTapIndex = html.indexOf('</body');
-          let reg = new RegExp('(.{' + fristScriptTapIndex + '})')
-          html = html.replace(reg, `$1<script src="http://${this.ip?this.ip:'localhost'}:${this.port}/webpack-dev-server.js"></script>`);
-          html = html.replace(/\s{3,}/g,'\n');
+          html = html.replace(/<\/body\s*>/,`</body><script src="http://${this.ip?this.ip:'localhost'}:${this.port}/webpack-dev-server.js"></script>`)
           data.html = html;
           cb(null, data)
         }
